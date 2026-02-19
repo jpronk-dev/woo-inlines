@@ -44,11 +44,7 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Highest Jump</span>
               <div className="flex items-center gap-1">
-                <div className="relative shrink-0 size-5 overflow-clip">
-                  <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[16.667px] left-[calc(50%+0.16px)] top-1/2 w-[10.324px]">
-                    <img alt="" className="absolute block inset-0 max-w-none" src="/assets/icon-triangle.svg" />
-                  </div>
-                </div>
+                <img alt="" className="shrink-0 size-5" src="/assets/icon-triangle.svg" />
                 <span className="text-base font-semibold text-[#0a0a0a]">{session.stats.maxHeight.toFixed(1)}m</span>
               </div>
             </div>
@@ -56,11 +52,7 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Max Airtime</span>
               <div className="flex items-center gap-1">
-                <div className="relative shrink-0 size-5 overflow-clip">
-                  <div className="absolute inset-[8.33%_13.54%_8.33%_16.67%]">
-                    <img alt="" className="absolute block inset-0 max-w-none" src="/assets/icon-airtime.svg" />
-                  </div>
-                </div>
+                <img alt="" className="shrink-0 size-5" src="/assets/icon-airtime.svg" />
                 <span className="text-base font-semibold text-[#0a0a0a]">{session.stats.maxAirtime.toFixed(1)}s</span>
               </div>
             </div>
@@ -68,11 +60,7 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Duration</span>
               <div className="flex items-center gap-1">
-                <div className="relative shrink-0 size-5 overflow-clip">
-                  <div className="absolute inset-[21%_9.35%_23.68%_8.33%]">
-                    <img alt="" className="absolute block inset-0 max-w-none" src="/assets/icon-duration.svg" />
-                  </div>
-                </div>
+                <img alt="" className="shrink-0 size-5" src="/assets/icon-duration.svg" />
                 <span className="text-base font-semibold text-[#0a0a0a]">{formatDuration(session.duration)}</span>
               </div>
             </div>
@@ -80,9 +68,7 @@ function SessionRow({ session }: { session: Session }) {
         </div>
         {/* Footer */}
         <div className="bg-[#fafafa] flex items-center gap-1.5 px-6 py-4">
-          <div className="relative shrink-0 size-5">
-            <img alt="" className="absolute inset-0 w-full h-full" src="/assets/icon-sensor.svg" />
-          </div>
+          <img alt="" className="shrink-0" src="/assets/icon-sensor.svg" />
           <span className="flex-1 text-sm text-[#737373]">Recorded on {session.recordedAt}</span>
         </div>
       </div>
