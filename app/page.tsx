@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Triangle, Timer, Clock, Radio, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { mockSessions, Session } from "@/lib/mockData";
 
 function formatDuration(seconds: number): string {
@@ -11,9 +12,23 @@ function formatDuration(seconds: number): string {
 
 function WooLogo() {
   return (
-    <svg width="67" height="24" viewBox="0 0 67 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="0" y="19" fontFamily="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" fontSize="22" fontWeight="800" fill="#0a0a0a" letterSpacing="-1">WOO</text>
-    </svg>
+    <div className="h-[24px] relative shrink-0 w-[66.667px]">
+      <div className="absolute inset-[1.45%_63.18%_3.42%_20.82%]">
+        <img alt="" className="absolute block inset-0 max-w-none w-full h-full" src="/assets/logo-fill1.svg" />
+      </div>
+      <div className="absolute inset-[1.45%_76.12%_3.42%_8.14%]">
+        <img alt="" className="absolute block inset-0 max-w-none w-full h-full" src="/assets/logo-fill3.svg" />
+      </div>
+      <div className="absolute inset-[1.08%_88.58%_43.34%_0]">
+        <img alt="" className="absolute block inset-0 max-w-none w-full h-full" src="/assets/logo-fill5.svg" />
+      </div>
+      <div className="absolute inset-[0.57%_0_1.4%_45.8%]">
+        <img alt="" className="absolute block inset-0 max-w-none w-full h-full" src="/assets/logo-fill7.svg" />
+      </div>
+      <div className="absolute inset-[0.57%_34.71%_3.93%_32.35%]">
+        <img alt="" className="absolute block inset-0 max-w-none w-full h-full" src="/assets/logo-fill10.svg" />
+      </div>
+    </div>
   );
 }
 
@@ -23,13 +38,17 @@ function SessionRow({ session }: { session: Session }) {
       <div className="bg-white border border-[#e5e5e5] rounded-lg overflow-hidden hover:shadow-sm transition-shadow cursor-pointer">
         {/* Main data */}
         <div className="flex flex-col gap-3 p-4">
-          <p className="text-sm font-semibold text-[#0a0a0a]">{session.athlete}</p>
+          <p className="text-sm font-semibold text-[#0a0a0a] leading-none">{session.athlete}</p>
           <div className="flex items-center gap-2 pb-1">
             {/* Highest Jump */}
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Highest Jump</span>
               <div className="flex items-center gap-1">
-                <Triangle size={20} fill="#00aeff" color="#00aeff" />
+                <div className="relative shrink-0 size-5 overflow-clip">
+                  <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[16.667px] left-[calc(50%+0.16px)] top-1/2 w-[10.324px]">
+                    <img alt="" className="absolute block inset-0 max-w-none" src="/assets/icon-triangle.svg" />
+                  </div>
+                </div>
                 <span className="text-base font-semibold text-[#0a0a0a]">{session.stats.maxHeight.toFixed(1)}m</span>
               </div>
             </div>
@@ -37,7 +56,11 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Max Airtime</span>
               <div className="flex items-center gap-1">
-                <Timer size={20} className="text-[#a3a3a3]" />
+                <div className="relative shrink-0 size-5 overflow-clip">
+                  <div className="absolute inset-[8.33%_13.54%_8.33%_16.67%]">
+                    <img alt="" className="absolute block inset-0 max-w-none" src="/assets/icon-airtime.svg" />
+                  </div>
+                </div>
                 <span className="text-base font-semibold text-[#0a0a0a]">{session.stats.maxAirtime.toFixed(1)}s</span>
               </div>
             </div>
@@ -45,7 +68,11 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Duration</span>
               <div className="flex items-center gap-1">
-                <Clock size={20} className="text-[#a3a3a3]" />
+                <div className="relative shrink-0 size-5 overflow-clip">
+                  <div className="absolute inset-[21%_9.35%_23.68%_8.33%]">
+                    <img alt="" className="absolute block inset-0 max-w-none" src="/assets/icon-duration.svg" />
+                  </div>
+                </div>
                 <span className="text-base font-semibold text-[#0a0a0a]">{formatDuration(session.duration)}</span>
               </div>
             </div>
@@ -53,7 +80,9 @@ function SessionRow({ session }: { session: Session }) {
         </div>
         {/* Footer */}
         <div className="bg-[#fafafa] flex items-center gap-1.5 px-4 py-3">
-          <Radio size={20} className="text-[#a3a3a3] flex-shrink-0" />
+          <div className="relative shrink-0 size-5">
+            <img alt="" className="absolute inset-0 w-full h-full" src="/assets/icon-sensor.svg" />
+          </div>
           <span className="flex-1 text-sm text-[#737373]">Recorded on {session.recordedAt}</span>
         </div>
       </div>
@@ -70,8 +99,8 @@ export default function Home() {
       <nav className="sticky top-0 z-20 bg-white border-b border-[#e2eaee] h-16">
         <div className="max-w-[826px] mx-auto h-full flex items-center justify-between px-4">
           <WooLogo />
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-orange-400 flex items-center justify-center cursor-pointer overflow-hidden flex-shrink-0">
-            <span className="text-white text-xs font-bold">MH</span>
+          <div className="relative shrink-0 size-6 rounded-full overflow-hidden">
+            <Image alt="avatar" src="/assets/avatar.png" fill className="object-cover" />
           </div>
         </div>
       </nav>
@@ -79,14 +108,11 @@ export default function Home() {
       {/* Content */}
       <div className="max-w-[826px] mx-auto px-4 py-6">
         <div className="bg-white border border-[#e5e5e5] rounded-lg p-8 flex flex-col gap-6">
-          <p className="text-xl font-semibold text-[#0a0a0a]">Your latest sessions</p>
+          <p className="text-xl font-semibold text-[#0a0a0a] leading-7">Your latest sessions</p>
 
-          {/* Session rows */}
-          <div className="flex flex-col gap-2">
-            {sessions.map((session) => (
-              <SessionRow key={session.id} session={session} />
-            ))}
-          </div>
+          {sessions.map((session) => (
+            <SessionRow key={session.id} session={session} />
+          ))}
 
           {/* Pagination */}
           <div className="flex items-center justify-center gap-1 py-2">
