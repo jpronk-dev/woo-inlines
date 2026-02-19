@@ -11,104 +11,84 @@ export default function Header({ session }: HeaderProps) {
   const router = useRouter();
 
   return (
-    <div className="absolute top-0 left-0 right-0 h-[56px] bg-white/90 backdrop-blur-sm border-b border-gray-200 flex items-center justify-between px-4 z-10">
-      {/* Left: back + title */}
-      <div className="flex items-center gap-3">
-        <button
-          onClick={() => router.back()}
-          className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
-          aria-label="Go back"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M10 3L5 8L10 13"
-              stroke="#1A1A1A"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-        <span className="text-sm font-semibold text-gray-900 truncate max-w-[220px]">
-          {session.athlete}, {session.date}
-        </span>
-      </div>
-
-      {/* Right: action icons */}
-      <div className="flex items-center gap-1">
-        {/* Kite/wind icon */}
-        <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M10 10 L4 4 M10 10 L16 4 M10 10 L10 17"
-              stroke="#1A1A1A"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <circle cx="10" cy="10" r="2" fill="#1A1A1A" />
-            <path
-              d="M4 4 Q10 1 16 4 Q13 10 10 10 Q7 10 4 4Z"
-              stroke="#1A1A1A"
-              strokeWidth="1.5"
-              fill="none"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-
-        {/* Zoom icon */}
-        <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="7.5" cy="7.5" r="5.5" stroke="#1A1A1A" strokeWidth="1.5" />
-            <path
-              d="M13 13L16.5 16.5"
-              stroke="#1A1A1A"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-            <path d="M5 7.5H10M7.5 5V10" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
-
-        {/* Filter/settings icon */}
-        <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="5" cy="5" r="1.5" stroke="#1A1A1A" strokeWidth="1.5" />
-            <circle cx="13" cy="9" r="1.5" stroke="#1A1A1A" strokeWidth="1.5" />
-            <circle cx="5" cy="13" r="1.5" stroke="#1A1A1A" strokeWidth="1.5" />
-            <path d="M7 5H16M1 9H11M7 13H16" stroke="#1A1A1A" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-        </button>
-
-        {/* Share icon */}
-        <button className="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path
-              d="M9 2V12M5 6L9 2L13 6"
-              stroke="#1A1A1A"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M3 12V15C3 15.55 3.45 16 4 16H14C14.55 16 15 15.55 15 15V12"
-              stroke="#1A1A1A"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-
-        {/* Avatar */}
-        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-orange-400 flex items-center justify-center ml-1 cursor-pointer">
-          <span className="text-white text-xs font-bold">
-            {session.athlete
-              .split(" ")
-              .map((n) => n[0])
-              .join("")}
+    <>
+      {/* Top-left: Session info card */}
+      <div className="absolute top-4 left-4 z-10">
+        <div className="bg-white border border-gray-200 rounded-lg flex items-center gap-2 pl-2 pr-4 py-2 shadow-sm">
+          <button
+            onClick={() => router.back()}
+            className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
+            aria-label="Go back"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="m12 19-7-7 7-7" />
+              <path d="M19 12H5" />
+            </svg>
+          </button>
+          <span className="text-sm font-semibold text-gray-900 truncate max-w-[180px]">
+            {session.athlete}, {session.date}
           </span>
         </div>
       </div>
-    </div>
+
+      {/* Top-right: Camera controls + actions */}
+      <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
+        {/* Camera controls card */}
+        <div className="bg-white border border-gray-200 rounded-lg flex items-center gap-2 pl-2 pr-2.5 py-2 shadow-sm">
+          {/* Rotate3D — active state */}
+          <button
+            className="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 flex-shrink-0"
+            aria-label="Rotate 3D"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M16.466 7.5C15.643 4.237 13.952 2 12 2 9.239 2 7 6.477 7 12s2.239 10 5 10c.342 0 .677-.069 1-.2" />
+              <path d="m15 6 5 4-5 4" />
+              <path d="M3 12a9 9 0 0 0 9 9" />
+            </svg>
+          </button>
+          {/* ZoomIn */}
+          <button
+            className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
+            aria-label="Zoom in"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+              <path d="M11 8v6M8 11h6" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Actions card */}
+        <div className="bg-white border border-gray-200 rounded-lg flex items-center gap-2 pl-2 pr-2.5 py-2 shadow-sm">
+          {/* Settings */}
+          <button
+            className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
+            aria-label="Settings"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 0-6 3 3 0 0 0 0-6zM7 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
+            </svg>
+          </button>
+          {/* Share */}
+          <button
+            className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
+            aria-label="Share"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+              <polyline points="16 6 12 2 8 6" />
+              <line x1="12" y1="2" x2="12" y2="15" />
+            </svg>
+          </button>
+          {/* Avatar */}
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-orange-400 flex items-center justify-center flex-shrink-0 cursor-pointer overflow-hidden">
+            <span className="text-white text-xs font-bold">
+              {session.athlete.split(" ").map((n) => n[0]).join("")}
+            </span>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

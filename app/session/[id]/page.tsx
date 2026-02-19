@@ -43,8 +43,8 @@ export default function SessionPage() {
     <div className="relative w-screen h-screen overflow-hidden bg-[#F0F0F0]">
       <Header session={session} />
 
-      {/* 3D viewport */}
-      <div className="absolute inset-0 pt-[56px] pb-[72px]">
+      {/* 3D viewport — full screen */}
+      <div className="absolute inset-0">
         <Scene3D
           path={session.path}
           tricks={session.tricks}
