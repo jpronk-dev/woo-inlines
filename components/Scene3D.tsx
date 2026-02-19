@@ -108,16 +108,6 @@ export default function Scene3D({
       <directionalLight position={[-20, 10, -10]} intensity={0.3} />
 
       <Grid />
-      <SessionPath points={path} />
-
-      {tricks.map((trick) => (
-        <TrickMarker
-          key={trick.id}
-          trick={trick}
-          isActive={trick.id === activeTrickId}
-          currentTime={currentTime}
-        />
-      ))}
 
       <OrbitControls
         enablePan
