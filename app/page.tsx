@@ -37,7 +37,7 @@ function SessionRow({ session }: { session: Session }) {
     <Link href={`/session/${session.id}`}>
       <div className="bg-white border border-[#e5e5e5] rounded-lg overflow-hidden hover:shadow-sm transition-shadow cursor-pointer">
         {/* Main data */}
-        <div className="flex flex-col gap-3 p-6">
+        <div className="flex flex-col gap-4 p-8">
           <p className="text-sm font-semibold text-[#0a0a0a] leading-none">{session.athlete}</p>
           <div className="flex items-center gap-2 pb-1">
             {/* Highest Jump */}
@@ -67,7 +67,7 @@ function SessionRow({ session }: { session: Session }) {
           </div>
         </div>
         {/* Footer */}
-        <div className="bg-[#fafafa] flex items-center gap-1.5 px-6 py-4">
+        <div className="bg-[#fafafa] flex items-center gap-1.5 px-8 py-5">
           <img alt="" width={17} height={6} src="/assets/icon-sensor.svg" />
           <span className="flex-1 text-sm text-[#737373]">Recorded on {session.recordedAt}</span>
         </div>
