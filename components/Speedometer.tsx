@@ -25,7 +25,7 @@ export default function Speedometer() {
       {/* Text */}
       <div
         className="absolute flex flex-col items-end"
-        style={{ left: 34.5, top: 53.86, width: 130.645 }}
+        style={{ left: 34.5, top: 53.86, width: 130.645, fontFamily: 'Henus, sans-serif' }}
       >
         <span style={{ fontSize: 8.448, letterSpacing: -0.034, lineHeight: '15.5px', width: 55.616, textAlign: 'right', fontWeight: 400 }}>
           SPEED RIDER
