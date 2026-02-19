@@ -97,7 +97,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#f5f5f5]">
       {/* Top Nav */}
       <nav className="sticky top-0 z-20 bg-white border-b border-[#e2eaee] h-16">
-        <div className="max-w-[826px] mx-auto h-full flex items-center justify-between px-4">
+        <div style={{ maxWidth: 826, margin: '0 auto', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px' }}>
           <WooLogo />
           <div className="relative shrink-0 size-6 rounded-full overflow-hidden">
             <Image alt="avatar" src="/assets/avatar.png" fill className="object-cover" />
@@ -106,7 +106,7 @@ export default function Home() {
       </nav>
 
       {/* Content */}
-      <div className="max-w-[826px] mx-auto px-4 py-6">
+      <div style={{ maxWidth: 826, margin: '0 auto', padding: '24px 0' }}>
         <div className="bg-white border border-[#e5e5e5] rounded-lg p-8 flex flex-col gap-6">
           <p className="text-xl font-semibold text-[#0a0a0a] leading-7">Your latest sessions</p>
 
