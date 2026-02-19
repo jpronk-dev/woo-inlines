@@ -46,7 +46,7 @@ const sharedPath = generatePath();
 
 export const mockSession: Session = {
   id: "session-1",
-  athlete: "Maarten Haeger",
+  athlete: "Leo Koenig",
   avatarUrl: "",
   date: "16 May, 2:34 PM",
   recordedAt: "May 16, 2025 – 14:34",
@@ -78,7 +78,7 @@ export const mockSessions: Session[] = [
   mockSession,
   {
     id: "session-2",
-    athlete: "Maarten Haeger",
+    athlete: "Leo Koenig",
     avatarUrl: "",
     date: "14 May, 10:15 AM",
     recordedAt: "May 14, 2025 – 10:15",
@@ -90,7 +90,7 @@ export const mockSessions: Session[] = [
   },
   {
     id: "session-3",
-    athlete: "Maarten Haeger",
+    athlete: "Leo Koenig",
     avatarUrl: "",
     date: "10 May, 3:00 PM",
     recordedAt: "May 10, 2025 – 15:00",
@@ -102,7 +102,7 @@ export const mockSessions: Session[] = [
   },
   {
     id: "session-4",
-    athlete: "Maarten Haeger",
+    athlete: "Leo Koenig",
     avatarUrl: "",
     date: "7 May, 9:30 AM",
     recordedAt: "May 7, 2025 – 09:30",
@@ -114,7 +114,7 @@ export const mockSessions: Session[] = [
   },
   {
     id: "session-5",
-    athlete: "Maarten Haeger",
+    athlete: "Leo Koenig",
     avatarUrl: "",
     date: "3 May, 1:45 PM",
     recordedAt: "May 3, 2025 – 13:45",
