@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Timeline from "@/components/Timeline";
+import Speedometer from "@/components/Speedometer";
 import { mockSession } from "@/lib/mockData";
 
 // Dynamically import 3D scene (no SSR)
@@ -53,6 +54,11 @@ export default function SessionPage() {
         />
       </div>
 
+
+      {/* Speedometer — bottom right, above timeline */}
+      <div className="absolute bottom-20 right-4 z-10">
+        <Speedometer />
+      </div>
 
       <Timeline
         currentTime={currentTime}
