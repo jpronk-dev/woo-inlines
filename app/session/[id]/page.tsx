@@ -55,8 +55,8 @@ export default function SessionPage() {
       </div>
 
 
-      {/* Speedometer — bottom right, above timeline */}
-      <div className="absolute bottom-20 right-4 z-10">
+      {/* Speedometer — bottom left, above timeline */}
+      <div className="absolute bottom-20 left-4 z-10">
         <Speedometer />
       </div>
 
