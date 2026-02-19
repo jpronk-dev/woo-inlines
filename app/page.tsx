@@ -44,7 +44,7 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Highest Jump</span>
               <div className="flex items-center gap-1">
-                <img alt="" className="shrink-0 size-5" src="/assets/icon-triangle.svg" />
+                <img alt="" width={20} height={20} src="/assets/icon-triangle.svg" />
                 <span className="text-base font-semibold text-[#0a0a0a]">{session.stats.maxHeight.toFixed(1)}m</span>
               </div>
             </div>
@@ -52,7 +52,7 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Max Airtime</span>
               <div className="flex items-center gap-1">
-                <img alt="" className="shrink-0 size-5" src="/assets/icon-airtime.svg" />
+                <img alt="" width={20} height={20} src="/assets/icon-airtime.svg" />
                 <span className="text-base font-semibold text-[#0a0a0a]">{session.stats.maxAirtime.toFixed(1)}s</span>
               </div>
             </div>
@@ -60,7 +60,7 @@ function SessionRow({ session }: { session: Session }) {
             <div className="flex flex-1 flex-col gap-1 min-w-0">
               <span className="text-sm text-[#171717]">Duration</span>
               <div className="flex items-center gap-1">
-                <img alt="" className="shrink-0 size-5" src="/assets/icon-duration.svg" />
+                <img alt="" width={20} height={20} src="/assets/icon-duration.svg" />
                 <span className="text-base font-semibold text-[#0a0a0a]">{formatDuration(session.duration)}</span>
               </div>
             </div>
