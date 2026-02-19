@@ -68,7 +68,7 @@ function SessionRow({ session }: { session: Session }) {
         </div>
         {/* Footer */}
         <div className="bg-[#fafafa] flex items-center gap-1.5 px-6 py-4">
-          <img alt="" className="shrink-0" src="/assets/icon-sensor.svg" />
+          <img alt="" width={17} height={6} src="/assets/icon-sensor.svg" />
           <span className="flex-1 text-sm text-[#737373]">Recorded on {session.recordedAt}</span>
         </div>
       </div>
