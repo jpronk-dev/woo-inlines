@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { Pause, Play, Gauge, Maximize } from "lucide-react";
 
 interface TimelineProps {
   currentTime: number;
@@ -42,20 +43,11 @@ export default function Timeline({
           className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
           aria-label={isPlaying ? "Pause" : "Play"}
         >
-          {isPlaying ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="6" y="4" width="4" height="16" rx="1" />
-              <rect x="14" y="4" width="4" height="16" rx="1" />
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="5 3 19 12 5 21 5 3" />
-            </svg>
-          )}
+          {isPlaying ? <Pause size={16} /> : <Play size={16} />}
         </button>
 
         {/* Current time */}
-        <span className="text-sm text-gray-900 tabular-nums flex-shrink-0 w-10">
+        <span className="text-sm text-[#0a0a0a] tabular-nums flex-shrink-0 w-10">
           {formatTime(currentTime)}
         </span>
 
@@ -83,7 +75,7 @@ export default function Timeline({
         </div>
 
         {/* Total time */}
-        <span className="text-sm text-gray-900 tabular-nums flex-shrink-0 w-10 text-right">
+        <span className="text-sm text-[#0a0a0a] tabular-nums flex-shrink-0 w-10 text-right">
           {formatTime(duration)}
         </span>
 
@@ -92,11 +84,7 @@ export default function Timeline({
           className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
           aria-label="Speed"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15.6 2.7a10 10 0 1 0 5.7 5.7" />
-            <circle cx="12" cy="12" r="2" />
-            <path d="M13.4 10.6 19 5" />
-          </svg>
+          <Gauge size={16} />
         </button>
 
         {/* Fullscreen */}
@@ -104,12 +92,7 @@ export default function Timeline({
           className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
           aria-label="Fullscreen"
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-            <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-            <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-            <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-          </svg>
+          <Maximize size={16} />
         </button>
       </div>
     </div>

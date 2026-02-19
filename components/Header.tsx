@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ArrowLeft, Rotate3d, ZoomIn, Settings2, Share } from "lucide-react";
 import { Session } from "@/lib/mockData";
 
 interface HeaderProps {
@@ -20,12 +21,9 @@ export default function Header({ session }: HeaderProps) {
             className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
             aria-label="Go back"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="m12 19-7-7 7-7" />
-              <path d="M19 12H5" />
-            </svg>
+            <ArrowLeft size={16} />
           </button>
-          <span className="text-sm font-semibold text-gray-900 truncate max-w-[180px]">
+          <span className="text-sm font-semibold text-[#0a0a0a] truncate max-w-[180px]">
             {session.athlete}, {session.date}
           </span>
         </div>
@@ -40,22 +38,14 @@ export default function Header({ session }: HeaderProps) {
             className="w-9 h-9 flex items-center justify-center rounded-md bg-gray-100 flex-shrink-0"
             aria-label="Rotate 3D"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M16.466 7.5C15.643 4.237 13.952 2 12 2 9.239 2 7 6.477 7 12s2.239 10 5 10c.342 0 .677-.069 1-.2" />
-              <path d="m15 6 5 4-5 4" />
-              <path d="M3 12a9 9 0 0 0 9 9" />
-            </svg>
+            <Rotate3d size={16} />
           </button>
           {/* ZoomIn */}
           <button
             className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
             aria-label="Zoom in"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="11" cy="11" r="8" />
-              <path d="m21 21-4.3-4.3" />
-              <path d="M11 8v6M8 11h6" />
-            </svg>
+            <ZoomIn size={16} />
           </button>
         </div>
 
@@ -66,20 +56,14 @@ export default function Header({ session }: HeaderProps) {
             className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
             aria-label="Settings"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 0-6 3 3 0 0 0 0-6zM7 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" />
-            </svg>
+            <Settings2 size={16} />
           </button>
           {/* Share */}
           <button
             className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
             aria-label="Share"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-              <polyline points="16 6 12 2 8 6" />
-              <line x1="12" y1="2" x2="12" y2="15" />
-            </svg>
+            <Share size={16} />
           </button>
           {/* Avatar */}
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-orange-400 flex items-center justify-center flex-shrink-0 cursor-pointer overflow-hidden">
