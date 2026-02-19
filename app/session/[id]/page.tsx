@@ -40,7 +40,7 @@ export default function SessionPage() {
   }, [isPlaying, session.duration]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#F0F0F0]">
+    <div className="relative w-screen h-screen overflow-hidden bg-[#f5f5f5]">
       <Header session={session} />
 
       {/* 3D viewport — full screen */}

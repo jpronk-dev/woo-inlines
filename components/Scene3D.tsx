@@ -10,7 +10,7 @@ import { Trick } from "@/lib/mockData";
 function Grid() {
   return (
     <gridHelper
-      args={[80, 20, "#D0D0D0", "#E0E0E0"]}
+      args={[200, 80, "#cccccc", "#e5e5e5"]}
       position={[0, 0, 0]}
       rotation={[0, 0, 0]}
     />
@@ -100,8 +100,8 @@ export default function Scene3D({
 }: Scene3DProps) {
   return (
     <Canvas
-      camera={{ position: [0, 28, 32], fov: 55, near: 0.1, far: 500 }}
-      style={{ background: "#F0F0F0" }}
+      camera={{ position: [0, 38, 18], fov: 50, near: 0.1, far: 500 }}
+      style={{ background: "#f5f5f5" }}
     >
       <ambientLight intensity={0.8} />
       <directionalLight position={[20, 30, 20]} intensity={0.6} castShadow />
