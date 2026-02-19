@@ -93,7 +93,7 @@ export default function Home() {
 
       {/* Content */}
       <div style={{ maxWidth: 826, margin: '0 auto', padding: '24px 0' }}>
-        <div className="bg-white border border-[#e5e5e5] rounded-lg p-8 flex flex-col gap-6">
+        <div className="bg-white border border-[#e5e5e5] rounded-lg p-8 flex flex-col gap-8">
           <p className="text-xl font-semibold text-[#0a0a0a] leading-7">Your latest sessions</p>
 
           {sessions.map((session) => (
