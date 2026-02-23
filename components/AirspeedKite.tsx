@@ -2,17 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface SpeedometerProps {
+interface AirspeedKiteProps {
   speed?: number; // KPH
 }
 
-const MAX_SPEED = 68;
+const MAX_AIRSPEED = 40;
 
-export default function Speedometer({ speed = 0 }: SpeedometerProps) {
+export default function AirspeedKite({ speed = 0 }: AirspeedKiteProps) {
   const kt = (speed * 0.539957).toFixed(2);
-  const targetProgress = Math.min(1, Math.max(0, speed / MAX_SPEED));
+  const targetProgress = Math.min(1, Math.max(0, speed / MAX_AIRSPEED));
 
-  // Smooth lerp so all SVG elements animate together frame-by-frame
   const [progress, setProgress] = useState(targetProgress);
   const animRef = useRef<number>(undefined);
   const targetRef = useRef(targetProgress);
@@ -31,20 +30,18 @@ export default function Speedometer({ speed = 0 }: SpeedometerProps) {
     return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
   }, [targetProgress]);
 
-  // Dial geometry — schaal.svg 179×179, center at (89, 89)
-  const cx = 89, cy = 89;
-  const outerR = 87; // matches outer edge of tick marks (r≈89 in schaal.svg → ticks on top)
-  const innerR = 76; // matches inner end of tick marks (~11px band width)
-  const startAngle = 120; // 8 o'clock — matches Frame 1188 dial (schaal.svg rotated 30° CW)
+  // Right-side dial: center at x=171 (260-89), y=89
+  const cx = 171, cy = 89;
+  const outerR = 87;
+  const innerR = 76;
+  // Mirror of startAngle=120° → 60°, sweeps CCW
+  const startAngle = 60;
 
   const toRad = (deg: number) => (deg * Math.PI) / 180;
-  const endAngle = startAngle + progress * 180;
 
-  // Closed ring-sector path: outer arc forward → inner arc backward → close
-  // This matches the exact technique used in the Figma SVG (mask + stroke)
   const makeRingPath = (p: number): string => {
     if (p < 0.01) return "";
-    const end = startAngle + p * 180;
+    const end = startAngle - p * 180; // CCW sweep (decreasing angle)
     const large = p * 180 > 180 ? 1 : 0;
 
     const ox1 = cx + outerR * Math.cos(toRad(startAngle));
@@ -58,64 +55,45 @@ export default function Speedometer({ speed = 0 }: SpeedometerProps) {
 
     return [
       `M ${ox1.toFixed(3)} ${oy1.toFixed(3)}`,
-      `A ${outerR} ${outerR} 0 ${large} 1 ${ox2.toFixed(3)} ${oy2.toFixed(3)}`,
+      `A ${outerR} ${outerR} 0 ${large} 0 ${ox2.toFixed(3)} ${oy2.toFixed(3)}`, // CCW
       `L ${ix2.toFixed(3)} ${iy2.toFixed(3)}`,
-      `A ${innerR} ${innerR} 0 ${large} 0 ${ix1.toFixed(3)} ${iy1.toFixed(3)}`,
+      `A ${innerR} ${innerR} 0 ${large} 1 ${ix1.toFixed(3)} ${iy1.toFixed(3)}`, // CW back
       `Z`,
     ].join(" ");
   };
 
   const ringPath = makeRingPath(progress);
 
-  // Triangle needle — just outside outer ring at the arc tip
-  const needleR = outerR + 4;
-  const nx = cx + needleR * Math.cos(toRad(endAngle));
-  const ny = cy + needleR * Math.sin(toRad(endAngle));
-  const needleRot = endAngle - 90; // points inward toward center
-
   return (
     <div style={{ position: "relative", width: 260, height: 180 }}>
-      {/* SVG: green impulse ring (below dial overlay) */}
+      {/* Purple ring — right side */}
       <svg width={260} height={180} style={{ position: "absolute", left: 0, top: 0, overflow: "visible" }}>
-        <defs>
-          {/* Foreground blur matching Figma stdDeviation="1.52" */}
-          <filter id="speed-blur" x="-10%" y="-10%" width="120%" height="120%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
-          </filter>
-
-        </defs>
-
-        {/* Green impulse ring */}
         {progress > 0.01 && (
-          <path
-            d={ringPath}
-            fill="#3FEF9E"
-            fillOpacity={1}
-          />
+          <path d={ringPath} fill="#8B5CF6" fillOpacity={1} />
         )}
       </svg>
 
-      {/* Dial ring — rotated 30° CW to match reference design */}
+      {/* Dial ring on the right, mirrored + rotated */}
       <img
         alt=""
         src="/assets/schaal.svg"
         style={{
           position: "absolute",
-          left: 0,
+          right: 0,
           top: 0,
           width: 179,
           height: 179,
-          transform: "rotate(30deg)",
+          transform: "rotate(-30deg) scaleX(-1)",
           transformOrigin: "89px 89px",
         }}
       />
 
-      {/* Text */}
+      {/* Text on the left side */}
       <div
         style={{
           position: "absolute",
           left: -40,
-          right: 36,
+          right: 80,
           top: 55,
           display: "flex",
           flexDirection: "column",
@@ -133,7 +111,7 @@ export default function Speedometer({ speed = 0 }: SpeedometerProps) {
             color: "black",
           }}
         >
-          SPEED RIDER
+          AIRSPEED KITE
         </span>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 2, alignItems: "flex-end" }}>

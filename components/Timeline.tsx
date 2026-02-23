@@ -2,6 +2,7 @@
 
 import { useCallback } from "react";
 import { Pause, Play, Gauge, Maximize } from "lucide-react";
+import type { Trick } from "@/lib/mockData";
 
 interface TimelineProps {
   currentTime: number;
@@ -10,6 +11,8 @@ interface TimelineProps {
   onTogglePlay: () => void;
   onSeek: (time: number) => void;
   onReset: () => void;
+  onSpeedClick?: () => void;
+  tricks?: Trick[];
 }
 
 function formatTime(seconds: number): string {
@@ -24,6 +27,8 @@ export default function Timeline({
   isPlaying,
   onTogglePlay,
   onSeek,
+  onSpeedClick,
+  tricks = [],
 }: TimelineProps) {
   const progress = (currentTime / duration) * 100;
 
@@ -53,6 +58,20 @@ export default function Timeline({
 
         {/* Scrubber */}
         <div className="flex-1 relative flex items-center">
+          {/* Trick dots above the bar */}
+          {tricks.map((trick) => {
+            const pct = (trick.timestamp / duration) * 100;
+            return (
+              <button
+                key={trick.id}
+                onClick={() => onSeek(trick.timestamp)}
+                title={trick.name}
+                className="absolute z-10 w-2 h-2 rounded-full bg-[#00AEFF] border border-white shadow-sm hover:scale-150 transition-transform"
+                style={{ left: `calc(${pct}% - 4px)`, top: "-12px" }}
+              />
+            );
+          })}
+
           <div className="w-full h-[6px] rounded-full bg-gray-100 relative">
             <div
               className="absolute left-0 top-0 h-full rounded-full bg-[#00aeff]"
@@ -81,6 +100,7 @@ export default function Timeline({
 
         {/* CircleGauge (speed) */}
         <button
+          onClick={onSpeedClick}
           className="w-9 h-9 flex items-center justify-center rounded-md hover:bg-gray-100 transition-colors flex-shrink-0"
           aria-label="Speed"
         >
